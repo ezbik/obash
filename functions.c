@@ -301,7 +301,8 @@ int mk_sh_c ( char *infilename, char *key, char *iv , bool reusable, char *seria
 /* allocating memory for ciphertext: its bigger then plaintext */
 /* but i's not very predictable in size so using 2x to be conservative */
   ciphertext=malloc(2*insize);
-  b64ctx=malloc(2*insize);
+  /* b64ctx=malloc(2*insize); 
+REMOVED EZBIK 2023-12-27 */ 
 
 /* Initialise the openssl library */
   ERR_load_crypto_strings();
