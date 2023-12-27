@@ -241,11 +241,12 @@ int main(int argc, char *argv[])
   printf("Failed: %i/n",ret);
   else printf("Created %s.c\n",input_filename);
   printf("Compiling %s.c ",input_filename);
+  char mysleep[] = "0.2";
   if(flag_status('s',optionarray,sizeof(optionarray)/sizeof(option)))
   { printf("as static binary ");
-//    sprintf(str,"sleep 1 ; sync ;cc %s.c -o %s -static -lssl -lcrypto -ldl -lltdl -static-libgcc && strip %s",input_filename,output_filename,output_filename);
-    sprintf(str,"sleep 1 ; sync ;cc %s.c -o %s -static -lssl -lcrypto -ldl -static-libgcc && strip %s",input_filename,output_filename,output_filename);
-  } else sprintf(str,"sleep 1 ; sync ;cc %s.c -o %s -lssl -lcrypto && strip %s",input_filename,output_filename,output_filename);
+//    sprintf(str,"sleep %s ; sync ;cc %s.c -o %s -static -lssl -lcrypto -ldl -lltdl -static-libgcc && strip %s",mysleep,input_filename,output_filename,output_filename);
+    sprintf(str,"sleep %s ; sync ;cc %s.c -o %s -static -lssl -lcrypto -ldl -static-libgcc && strip %s",mysleep,input_filename,output_filename,output_filename);
+  } else sprintf(str,"sleep %s ; sync ;cc %s.c -o %s -lssl -lcrypto && strip %s",mysleep,input_filename,output_filename,output_filename);
 //  printf("%s\n",str); 
 //  exit(0);
   printf("... "); 
